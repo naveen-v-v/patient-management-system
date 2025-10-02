@@ -11,3 +11,4 @@ Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db 
 
 ### Documentation
 Swagger - springdoc-openapi is used for documentation.
+To check out the documentation, run the app --> goto http://localhost:4000/v3/api-docs

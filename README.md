@@ -10,4 +10,4 @@ Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db 
 "data.sql" file is present in src/main/resources folder. It will be executed automatically when the application is started.
 
 ### Documentation
-Swagger is used for documentation.
+Swagger - springdoc-openapi is used for documentation.

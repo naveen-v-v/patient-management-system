@@ -14,8 +14,7 @@ Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db 
 - To check out the documentation, run the app --> goto http://localhost:4000/v3/api-docs
 
 ### Docker
-- Container-name: patient-service-db 
-  - Docker image: postgres (for DB, from Docker hub)
+- DB Container-name: "patient-service-db" (Docker image used is postgres from Docker hub)
   - Bind ports (To access the db from outside the Docker container, that is  from IDE)
   - Set environment variables (like user, pass, db)
   - Bind mounts (Lets us save copy data to development machine, so that data does not get lost when we destroy the container)

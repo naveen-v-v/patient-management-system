@@ -37,6 +37,7 @@ services:
 volumes:
   patient-service-data:
 
+# !!! Make sure the network 'internal' is created before running the services !!!
 networks:
   internal:
-    driver: bridge
+    external: true

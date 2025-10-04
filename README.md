@@ -6,6 +6,11 @@ Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db 
 ### Spring Boot Architecture
 ![Spring-Boot-Architecture](https://github.com/naveen-v-v/patient-management-system/blob/dev/springboot-architecture.png)
 
+### REST and gRPC APIs
+- REST is used for communication between client and server.
+- gRPC is used for communication between internal microservices. As gRPC is faster than REST and it uses HTTP/2, it is more efficient for inter-service communication.
+
+
 ### Docker
 - Docker compose file is present in the root folder.
 - Useful commands are as follows:
@@ -25,7 +30,6 @@ Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db 
   # To view the logs
   docker-compose logs -f
   ```
-
 ### Sample data for DB
 "data.sql" file is present in src/main/resources folder. It will be executed automatically when the application is started.
 

@@ -4,12 +4,12 @@
 Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db locally)
 
 ### Spring Boot Architecture
-![Spring-Boot-Architecture](https://github.com/naveen-v-v/patient-management-system/blob/dev/springboot-architecture.png)
+![Spring-Boot-Architecture](https://github.com/naveen-v-v/patient-management-system/blob/main/architectures/springboot-architecture.png)
 
 ### REST and gRPC APIs
 - REST is used for communication between client and server.
 - gRPC is used for communication between internal microservices. As gRPC is faster than REST and it uses HTTP/2, it is more efficient for inter-service communication.
-
+![gRPC-Architecture](https://github.com/naveen-v-v/patient-management-system/blob/main/architectures/gRPC%20architecture.png)
 
 ### Docker
 - Docker compose file is present in the root folder.

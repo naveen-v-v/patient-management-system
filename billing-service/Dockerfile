@@ -1,4 +1,4 @@
-# patient-service/Dockerfile
+# billing-service/Dockerfile
 
 # Build Code
 FROM maven:3.9-eclipse-temurin-21 AS builder
@@ -12,6 +12,7 @@ RUN mvn clean package
 # Run the built code
 FROM openjdk:21-jdk AS runner
 WORKDIR /app
-COPY --from=builder ./app/target/patient-service-0.0.1-SNAPSHOT.jar ./app.jar
-EXPOSE 4000
+COPY --from=builder ./app/target/billing-service-0.0.1-SNAPSHOT.jar ./app.jar
+EXPOSE 4001
+EXPOSE 9001
 ENTRYPOINT ["java","-jar","app.jar"]

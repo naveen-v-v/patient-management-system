@@ -1,0 +1,24 @@
+// Protocol Buffers - Billing Service Definition
+syntax = "proto3";
+
+// Package definition
+option java_multiple_files = true;
+option java_package = "billing";
+
+// Service definition for billing operations
+service BillingService {
+  rpc CreateBillingAccount (BillingRequest) returns (BillingResponse);
+}
+
+// Request message for creating a billing account
+message BillingRequest {
+  string patientId = 1;
+  string name = 2;
+  string email = 3;
+}
+
+// Response message for billing account creation
+message BillingResponse {
+  string accountId = 1;
+  string status = 2;
+}

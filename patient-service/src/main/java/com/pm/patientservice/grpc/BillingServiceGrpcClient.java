@@ -27,7 +27,7 @@ public class BillingServiceGrpcClient {
     }
 
     public BillingResponse createBillingAccount(String patientId, String name, String email){
-        log.info("-------In createBillingAccount of BillingServiceGrpcClient-------");
+//        log.info("-------In createBillingAccount of BillingServiceGrpcClient-------");
         BillingRequest request = BillingRequest.newBuilder().setPatientId(patientId).setName(name).setEmail(email).build();
 //        log.info("Sending createBillingAccount request: {}", request);
 

@@ -40,7 +40,7 @@ public class PatientService {
 
         Patient newPatient = patientRepository.save(PatientMapper.toModel(patientRequestDTO));
 
-        log.info("-------Creating billing account for new patient via gRPC-------");
+//        log.info("-------Creating billing account for new patient via gRPC-------");
         // Call Billing Service via gRPC to create a billing account for the new patient
         billingServiceGrpcClient.createBillingAccount(newPatient.getId().toString(), newPatient.getName(), newPatient.getEmail());
 

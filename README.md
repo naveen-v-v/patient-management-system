@@ -1,7 +1,12 @@
 # Patient Management System
 
 ### Tech Stack
-Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db locally)
+- Spring Boot, Spring Data JPA, Maven
+- DBs: Postgres (for Production) and H2(for testing db locally)
+- Docker, Github
+- REST, gRPC API
+- Kafka
+- Swagger - springdoc-openapi
 
 ### Architectures
 

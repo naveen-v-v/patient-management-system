@@ -14,6 +14,11 @@ Spring Boot, Spring Data JPA, Postgres, Maven, Kafka, Docker, H2(for testing db 
 
 ![gRPC-Architecture](https://github.com/naveen-v-v/patient-management-system/blob/main/architectures/gRPC%20architecture.png)
 
+#### Kafka Architecture
+- Kafka is used for asynchronous communication between microservices.
+
+![kafka-architecture](https://github.com/naveen-v-v/patient-management-system/blob/main/architectures/kafka-architecture.png)
+
 ### Docker
 - Docker compose file is present in the root folder.
 - Useful commands are as follows:

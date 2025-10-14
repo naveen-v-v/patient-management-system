@@ -17,7 +17,7 @@ public class BillingServiceGrpcClient {
 
     public BillingServiceGrpcClient(
             @Value("${billing.service.address:localhost}") String serverAddress,
-            @Value("${billing.service.grpc.port:9090}") int serverPort
+            @Value("${billing.service.grpc.port:9001}") int serverPort
     ) {
         log.info("Connecting to Billing Service GRPC service at {}:{}", serverAddress, serverPort);
 
@@ -27,9 +27,9 @@ public class BillingServiceGrpcClient {
     }
 
     public BillingResponse createBillingAccount(String patientId, String name, String email){
-//        log.info("-------In createBillingAccount of BillingServiceGrpcClient-------");
+        log.info("-------In createBillingAccount of BillingServiceGrpcClient-------");
         BillingRequest request = BillingRequest.newBuilder().setPatientId(patientId).setName(name).setEmail(email).build();
-//        log.info("Sending createBillingAccount request: {}", request);
+        log.info("Sending createBillingAccount request: {}", request);
 
         BillingResponse response = blockingStub.createBillingAccount(request);
         log.info("Received response from billing service via GRPC: {}", response);

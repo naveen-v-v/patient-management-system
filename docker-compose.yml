@@ -15,6 +15,20 @@ services:
       - "5200:5432"
     networks:
       - internal
+    restart: unless-stopped
+
+  billing-service:
+    build:
+      context: ./billing-service
+      dockerfile: Dockerfile
+    image: billing-service:latest
+    container_name: billing-service
+    ports:
+      - "4001:4001"
+      - "9001:9001"
+    networks:
+      - internal
+    restart: unless-stopped
 
   patient-service:
     build:
@@ -33,9 +47,11 @@ services:
       - "4000:4000"
     networks:
       - internal
+    restart: unless-stopped
 
 volumes:
   patient-service-data:
+  kafka-logs:
 
 # !!! Make sure the network 'internal' is created before running the services !!!
 networks:

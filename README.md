@@ -5,8 +5,8 @@
 - DBs: Postgres (for Production) and H2(for testing db locally)
 - Docker, Github
 - REST, gRPC API
-- Kafka
-- Swagger - springdoc-openapi
+- Kafka (confluentinc/cp-kafka from DockerHub)
+- Swagger (springdoc-openapi)
 
 ### Architectures
 
@@ -21,6 +21,7 @@
 
 #### Kafka Architecture
 - Kafka is used for asynchronous communication between microservices.
+- confluentinc/cp-kafka from DockerHub is used for Kafka.
 
 ![kafka-architecture](https://github.com/naveen-v-v/patient-management-system/blob/main/architectures/kafka-architecture.png)
 

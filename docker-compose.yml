@@ -2,6 +2,19 @@
 # Docker Compose configuration for Patient Service and PostgreSQL database
 
 services:
+  billing-service:
+    build:
+      context: ./billing-service
+      dockerfile: Dockerfile
+    image: billing-service:latest
+    container_name: billing-service
+    ports:
+      - "4001:4001"
+      - "9001:9001"
+    networks:
+      - internal
+    restart: unless-stopped
+
   patient-service-db:
     image: postgres:latest
     container_name: patient-service-db
@@ -15,11 +28,13 @@ services:
       - "5200:5432"
     networks:
       - internal
+    restart: unless-stopped
 
   patient-service:
     build:
       context: ./patient-service
       dockerfile: Dockerfile
+    image: patient-service:latest
     container_name: patient-service
     environment:
       SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
@@ -29,13 +44,16 @@ services:
       SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
     depends_on:
       - patient-service-db
+      - billing-service
     ports:
       - "4000:4000"
     networks:
       - internal
+    restart: unless-stopped
 
 volumes:
   patient-service-data:
+  kafka-logs:
 
 # !!! Make sure the network 'internal' is created before running the services !!!
 networks:

@@ -24,9 +24,9 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT"
       # Log directory for Kafka
-      KAFKA_LOG_DIRS: "/var/lib/kafka/logs"
+#      KAFKA_LOG_DIRS: "/kafka-logs"
     volumes:
-      - kafka-logs:/var/lib/kafka/logs
+      - kafka-logs:/var/lib/kafka/data
     networks:
       - internal
 

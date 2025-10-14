@@ -42,6 +42,10 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
       SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
+      # gRPC Billing Service Configuration
+      BILLING_SERVICE_GRPC_PORT: 9001
+      BILLING_SERVICE_ADDRESS: billing-service
+
     depends_on:
       - patient-service-db
       - billing-service

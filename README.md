@@ -43,6 +43,10 @@
   
   # To view the logs
   docker-compose logs -f
+  
+  # Other useful commands
+    docker ps
+    docker compose down -v
   ```
 ### Sample data for DB
 "data.sql" file is present in src/main/resources folder. It will be executed automatically when the application is started.

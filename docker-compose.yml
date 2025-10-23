@@ -23,6 +23,7 @@ services:
       KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094"
       KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT"
+
       # Log directory for Kafka
 #      KAFKA_LOG_DIRS: "/kafka-logs"
     volumes:
@@ -41,7 +42,6 @@ services:
       - "9001:9001"
     networks:
       - internal
-    restart: unless-stopped
 
   patient-service-db:
     image: postgres:latest
@@ -56,7 +56,25 @@ services:
       - "5200:5432"
     networks:
       - internal
-    restart: unless-stopped
+
+  analytics-service:
+    build:
+      context: ./analytics-service
+      dockerfile: Dockerfile
+    image: analytics-service:latest
+    container_name: analytics-service
+    environment:
+      # Kafka Configuration
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+
+      SPRING_KAFKA_CONSUMER_KEY_DESERIALIZER: "org.apache.kafka.common.serialization.StringDeserializer"
+      SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER: "org.apache.kafka.common.serialization.ByteArrayDeserializer"
+    depends_on:
+        - kafka
+    ports:
+      - "4002:4002"
+    networks:
+      - internal
 
   patient-service:
     build:
@@ -83,7 +101,6 @@ services:
       - "4000:4000"
     networks:
       - internal
-    restart: unless-stopped
 
 volumes:
   patient-service-data:

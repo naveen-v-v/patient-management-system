@@ -58,6 +58,23 @@ services:
       - internal
     restart: unless-stopped
 
+  analytics-service:
+    build:
+      context: ./analytics-service
+      dockerfile: Dockerfile
+    image: analytics-service:latest
+    container_name: analytics-service
+    environment:
+      # Kafka Configuration
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+    depends_on:
+        - kafka
+    ports:
+      - "4002:4002"
+    networks:
+      - internal
+    restart: unless-stopped
+
   patient-service:
     build:
       context: ./patient-service

@@ -23,6 +23,7 @@ services:
       KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094"
       KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT"
+
       # Log directory for Kafka
 #      KAFKA_LOG_DIRS: "/kafka-logs"
     volumes:
@@ -65,6 +66,9 @@ services:
     environment:
       # Kafka Configuration
       SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+
+      SPRING_KAFKA_CONSUMER_KEY_DESERIALIZER: "org.apache.kafka.common.serialization.StringDeserializer"
+      SPRING_KAFKA_CONSUMER_VALUE_DESERIALIZER: "org.apache.kafka.common.serialization.ByteArrayDeserializer"
     depends_on:
         - kafka
     ports:

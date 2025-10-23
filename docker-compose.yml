@@ -73,6 +73,8 @@ services:
       # gRPC Billing Service Configuration
       BILLING_SERVICE_GRPC_PORT: 9001
       BILLING_SERVICE_ADDRESS: billing-service
+      # Kafka Configuration
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
 
     depends_on:
       - patient-service-db

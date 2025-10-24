@@ -31,6 +31,13 @@
 - It acts as a single entry point for all client requests.
 - It protects the internal microservices from direct exposure to the client applications.
 
+### List of Services
+- Patient Service (patient-service)
+- Billing Service (billing-service)
+- Analytics Service (analytics-service)
+- grpc service
+- API Gateway Service
+
 ### Docker
 - Docker compose file is present in the root folder.
 - Useful commands are as follows:

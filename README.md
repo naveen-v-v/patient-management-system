@@ -7,6 +7,7 @@
 - REST, gRPC API
 - Kafka (confluentinc/cp-kafka from DockerHub)
 - Swagger (springdoc-openapi)
+- API Gateway (Spring Cloud Gateway dependency)
 
 ### Architectures
 
@@ -27,9 +28,17 @@
 
 #### API Gateway Architecture
 - API Gateway is used to route the requests to appropriate microservices.
+- Makes use of Spring Cloud Gateway dependency.
 - It also handles cross-cutting concerns such as authentication, logging, rate limiting, etc.
 - It acts as a single entry point for all client requests.
 - It protects the internal microservices from direct exposure to the client applications.
+
+### List of Services
+- Patient Service (patient-service)
+- Billing Service (billing-service)
+- Analytics Service (analytics-service)
+- API Gateway Service (api-gateway)
+- grpc service (It is integrated within each microservice as needed)
 
 ### Docker
 - Docker compose file is present in the root folder.

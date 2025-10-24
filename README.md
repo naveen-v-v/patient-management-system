@@ -37,8 +37,8 @@
 - Patient Service (patient-service)
 - Billing Service (billing-service)
 - Analytics Service (analytics-service)
-- grpc service
-- API Gateway Service
+- API Gateway Service (api-gateway)
+- grpc service (It is integrated within each microservice as needed)
 
 ### Docker
 - Docker compose file is present in the root folder.

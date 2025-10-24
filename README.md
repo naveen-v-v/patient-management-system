@@ -25,6 +25,12 @@
 
 ![kafka-architecture](https://github.com/naveen-v-v/patient-management-system/blob/main/architectures/kafka-architecture.png)
 
+#### API Gateway Architecture
+- API Gateway is used to route the requests to appropriate microservices.
+- It also handles cross-cutting concerns such as authentication, logging, rate limiting, etc.
+- It acts as a single entry point for all client requests.
+- It protects the internal microservices from direct exposure to the client applications.
+
 ### Docker
 - Docker compose file is present in the root folder.
 - Useful commands are as follows:

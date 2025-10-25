@@ -31,18 +31,6 @@ services:
     networks:
       - internal
 
-  billing-service:
-    build:
-      context: ./billing-service
-      dockerfile: Dockerfile
-    image: billing-service:latest
-    container_name: billing-service
-    ports:
-      - "4001:4001"
-      - "9001:9001"
-    networks:
-      - internal
-
   patient-service-db:
     image: postgres:latest
     container_name: patient-service-db
@@ -54,6 +42,32 @@ services:
       - patient-service-data:/var/lib/postgresql/data
     ports:
       - "5200:5432"
+    networks:
+      - internal
+
+  auth-service-db:
+    image: postgres:latest
+    container_name: auth-service-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - auth-service-data:/var/lib/postgresql/data
+    ports:
+      - "5001:5432"
+    networks:
+      - internal
+
+  billing-service:
+    build:
+      context: ./billing-service
+      dockerfile: Dockerfile
+    image: billing-service:latest
+    container_name: billing-service
+    ports:
+      - "4001:4001"
+      - "9001:9001"
     networks:
       - internal
 
@@ -83,7 +97,7 @@ services:
     image: patient-service:latest
     container_name: patient-service
     environment:
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_URL: ${SPRING_PATIENT_DATASOURCE_URL}
       SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
@@ -102,6 +116,25 @@ services:
     networks:
       - internal
 
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    image: auth-service:latest
+    container_name: auth-service
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_AUTH_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+      SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
+    depends_on:
+      - auth-service-db
+    ports:
+        - "4005:4005"
+    networks:
+      - internal
+
   api-gateway:
     build:
       context: ./api-gateway
@@ -117,6 +150,7 @@ services:
 
 volumes:
   patient-service-data:
+  auth-service-data:
   kafka-logs:
 
 # !!! Make sure the network 'internal' is created before running the services !!!

@@ -11,7 +11,7 @@ spring:
           predicates:
             - Path=/api/patients/**
           filters:
-            - strip-prefix=1
+            - StripPrefix=1
 
         # Route for /api/docs/patients to patient-service /v3/api-docs
         - id: api-docs-patient-route
@@ -19,4 +19,4 @@ spring:
           predicates:
             - Path=/api-docs/patients
           filters:
-            - rewrite-path=/api-docs/patients,/v3/api-docs
+            - RewritePath=/api-docs/patients,/v3/api-docs

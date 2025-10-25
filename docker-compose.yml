@@ -97,8 +97,22 @@ services:
     depends_on:
       - patient-service-db
       - billing-service
+#   # hiding the patient-service port as it's accessed via the API Gateway
+#    ports:
+#      - "4000:4000"
+    networks:
+      - internal
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    image: api-gateway:latest
+    container_name: api-gateway
+    depends_on:
+      - patient-service
     ports:
-      - "4000:4000"
+      - "4004:4004"
     networks:
       - internal
 

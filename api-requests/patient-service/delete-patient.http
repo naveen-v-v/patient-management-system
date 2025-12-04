@@ -1,4 +1,4 @@
 ### Delete Patient
-DELETE http://localhost:4004/api/patients/fcf689ab-6320-4301-9e62-914fa10a18b6
+DELETE http://localhost:4004/api/patients/a55d5da5-4552-462a-89f6-3c5d5a949a13
 
 ###
